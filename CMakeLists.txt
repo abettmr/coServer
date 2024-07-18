@@ -1,0 +1,33 @@
+cmake_minimum_required(VERSION 3.20)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED on)
+set(CMAKE_EXPORT_COMPILE_COMMANDS on)
+# set(CMAKE_C_COMPILER "clang")
+# set(CMAKE_CXX_COMPILER "clang++")
+
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE "Debug")
+endif()
+set(CMAKE_BUILD_PARALLEL_LEVEL 4)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build/bin")#可执行文件
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build/lib")#动态库
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build/lib/static")#静态库
+message(STATUS "OutputDir: ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+
+
+find_package(Boost REQUIRED)
+set(link_list
+    # Boost::Asio
+)
+
+project(hola
+    VERSION 0
+    LANGUAGES C CXX
+    DESCRIPTION "")
+# message(STATUS "PROJECT_SOURCE_DIR: ${PROJECT_SOURCE_DIR}")
+# message(STATUS "PROJECT_BIN_DIR: ${PROJECT_BINARY_DIR}")
+# message(STATUS "CCSD: ${CMAKE_CURRENT_SOURCE_DIR}")
+# message(STATUS "CCBD: ${CMAKE_CURRENT_BINARY_DIR}")
+# message(STATUS "ROOT DONE.")
+add_subdirectory("src")
